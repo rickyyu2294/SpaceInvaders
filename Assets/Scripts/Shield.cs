@@ -10,9 +10,18 @@ public class Shield : MonoBehaviour
         
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Bullet" || collision.gameObject.tag == "EnemyBullet")
+        {
+            Destroy(gameObject);
+        }
+        else if (collision.gameObject.tag == "Enemy")
         {
             Destroy(gameObject);
         }

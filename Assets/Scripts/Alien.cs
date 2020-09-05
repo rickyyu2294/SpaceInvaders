@@ -99,7 +99,7 @@ public class Alien : MonoBehaviour
 
     private void Update()
     {
-        if (Time.timeSinceLevelLoad > baseFireWaitTime)
+        if (Time.timeSinceLevelLoad > baseFireWaitTime && !isDead)
         {
             baseFireWaitTime = baseFireWaitTime + Random.Range(minFireWaitTime, maxFireWaitTime);
             Instantiate(bullet, transform.position, Quaternion.identity);

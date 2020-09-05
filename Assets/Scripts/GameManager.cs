@@ -7,11 +7,18 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance = null;
+    private int numEnemies;
+    
 
     public void GameOver()
     {
         var gameOver = GameObject.Find("GameOver").GetComponent<Text>();
         gameOver.enabled = true;
+    }
+
+    public void KillEnemy()
+    {
+
     }
 
     private Canvas canvas;
@@ -26,6 +33,8 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        numEnemies = GameObject.Find("Enemies").transform.childCount;
     }
 
     // Update is called once per frame
@@ -35,5 +44,7 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+
+        // Check Win Condition
     }
 }

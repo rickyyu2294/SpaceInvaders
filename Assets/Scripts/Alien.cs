@@ -51,9 +51,8 @@ public class Alien : MonoBehaviour
             if (!isDead)
             {
                 //SoundManager.Instance.PlayOneShot(SoundManager.Instance.alienDies);
-                IncreaseTextUIScore();
                 GetComponent<SpriteRenderer>().sprite = deadAlien;
-
+                GameManager.Instance.EnemyKilled();
                 isDead = true;
 
                 Destroy(gameObject, 1.5F);
@@ -85,16 +84,6 @@ public class Alien : MonoBehaviour
             enemy.transform.position = new Vector2(enemy.transform.position.x, enemy.transform.position.y - 2.5F);
 
         }
-    }
-
-    void IncreaseTextUIScore()
-    {
-        var textUIComp = GameObject.Find("Score").GetComponent<Text>();
-
-        var score = int.Parse(textUIComp.text);
-        score += 10;
-
-        textUIComp.text = score.ToString();
     }
 
     private void Update()

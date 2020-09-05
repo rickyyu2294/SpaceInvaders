@@ -8,17 +8,38 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance = null;
     private int numEnemies;
-    
+    private bool playerDead;
 
     public void GameOver()
     {
+        playerDead = true;
         var gameOver = GameObject.Find("GameOver").GetComponent<Text>();
         gameOver.enabled = true;
     }
 
-    public void KillEnemy()
+    public void BulletShot()
     {
 
+    }
+
+    public void EnemyKilled()
+    {
+        // Increase Score when enemy killed
+        var textUIComp = GameObject.Find("Score").GetComponent<Text>();
+
+        var score = int.Parse(textUIComp.text);
+        score += 10;
+
+        textUIComp.text = score.ToString();
+
+        numEnemies--;
+
+        if (numEnemies <= 0 && !playerDead)
+        {
+            var gameOver = GameObject.Find("GameOver").GetComponent<Text>();
+            gameOver.text = "YOU WIN";
+            gameOver.enabled = true;
+        }
     }
 
     private Canvas canvas;

@@ -58,8 +58,6 @@ public class Alien : MonoBehaviour
                 Destroy(gameObject, 1.5F);
             }
         }
-
-
     }
 
     void Turn (int direction)

@@ -19,7 +19,12 @@ public class GameManager : MonoBehaviour
 
     public void BulletShot()
     {
+        var textUIComp = GameObject.Find("Score").GetComponent<Text>();
 
+        var score = int.Parse(textUIComp.text);
+        score -= 1;
+        if (score < 0) score = 0;
+        textUIComp.text = score.ToString();
     }
 
     public void EnemyKilled()
